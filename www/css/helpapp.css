@@ -1,0 +1,34 @@
+h4{
+	padding:0px 10px 0px 0px;
+}
+
+div[data-role="content"]{
+	margin-left:40px;
+	margin-right:40px;
+	/*vertical-align: middle;*/
+}
+
+/*div[data-role="content-2"]{
+	margin-left:20px;
+	margin-right:20px;
+}
+
+div[data-role=page]{
+	height: 100% !important; 
+	position:relative !important;
+}
+*/
+div[data-role=footer]{
+	bottom:0; 
+	position:absolute !important; 
+	top: auto !important; 
+	width:100%;
+}
+
+div[data-role="collapsible-set"]{
+	
+}
+div[class="ui-block-b"] img{
+	margin-top: 7px;
+	margin-right: 10px;
+}

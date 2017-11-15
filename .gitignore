@@ -1,0 +1,7 @@
+# Ignore everithing
+/*
+# Except from
+!android-debug.apk
+!/.gitignore
+!www/
+!config.xml

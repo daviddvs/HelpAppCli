@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset="utf-8" />
+    	<script src="js/jquery-2.0.2.js"></script>
+    	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<meta http-equiv="Content-Security-Policy" content="media-src 'self' http://u017633.ehu.eus:28080 http://192.168.1.97:8080 http://10.107.18.188:8080 http://158.227.64.57:8080 https://dl.dropboxusercontent.com;
+   															connect-src http://u017633.ehu.eus:28080 http://192.168.1.97:8080 http://10.107.18.188:8080 http://158.227.64.57:8080;"/>        
+   		<meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <!-- <link rel="stylesheet" type="text/css" href="css/index.css">  -->
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/helpapp.css">
+        <title>HelpApp</title>
+    </head>
+    <body>
+    <!-- Pagina principal -->
+	    <div data-role="page" id="page-0-0" data-theme="a" data-scroll="true">
+				<div data-role="header" data-theme="a">
+					<h1>Main Page</h1>
+				</div>
+				<div data-role="content">
+					<div align="center"><img border="0" width="150px" style="margin-top:40px" src="img/HelpApp3.png"/></div>
+					<a href="#page-0-1" id="button-0-0-1" class="ui-btn ui-corner-all" style="margin:50px 30%;">Bilbao</a>
+				</div>
+				<div data-role="controlgroup" id="buttons-main" data-type="horizontal" align="center">
+					<a href="#page-test-0" class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left ui-btn-a">Get Ready</a>
+					<a href="#page-login" class="ui-btn ui-corner-all ui-icon-user ui-btn-icon-left ui-btn-a">Profile</a>
+				</div>
+				<div data-role="footer" data-theme="a" data-position="fixed">
+					<h4>Developed by David Franco</h4>
+				</div>
+		</div>
+    
+     <!-- Pagina login -->
+	    <div data-role="page" id="page-login" data-theme="a" data-scroll="true">
+			<div data-role="header" data-theme="a">
+				<h1>Login</h1>
+			</div>
+			<div data-role="content">
+				<div id="login-request" class="ui-field-contain" style="margin:5px 5%;">
+					<label for="loginId"></label>
+					<input name="text-loginId" id="loginId" data-clear-btn="true" value="" type="text" placeholder="Enter your login" />
+					<a href="" id="button-login-2" class="ui-btn ui-btn-inline ui-corner-all" onclick="loginn()">LOGIN</a>
+					<a href="#popup-signUp" data-transition="fade" data-rel="popup" class="ui-btn ui-corner-all ui-alt-icon ui-shadow ui-btn-inline" title="SIGN UP">SIGN UP</a>
+					<div data-role="popup" id="popup-signUp" class="ui-content">
+						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+						<form id="form-login">
+							<div class="ui-field-contain">
+								<label for="signupLoginId">Login ID:</label>
+								<input name="signupName" id="signupLoginId" data-clear-btn="true" value="" placeholder="Enter a valid ID" type="text"/>
+							</div>
+							<div class="ui-field-contain">
+								<label for="signupName">Name:</label>
+								<input name="signupName" id="signupName" data-clear-btn="true" value="" placeholder="Enter full name" type="text"/>
+							</div>
+							<fieldset data-role="controlgroup" id="gender" data-type="horizontal">
+								<legend>Gender:</legend>
+								<input name="login-radio-choice-1" id="login-radio-choice-1a" data-mini="true" value="Boy" type="radio"/>
+								<label for="login-radio-choice-1a">Boy</label>
+								<input name="login-radio-choice-1" id="login-radio-choice-1b" data-mini="true" value="Girl" type="radio"/>
+								<label for="login-radio-choice-1b">Girl</label>
+								<input name="login-radio-choice-1" id="login-radio-choice-1c" data-mini="true" value="Other" type="radio"/>
+								<label for="login-radio-choice-1c">Other</label>
+							</fieldset>
+							<div class="ui-field-contain">
+								<label for="country">Country:</label>
+								<input name="country" id="country" data-clear-btn="true" value="" placeholder="Enter yout country" type="text"/>
+							</div>
+							<a href="" id="button-3" class="ui-btn ui-mini ui-btn-inline ui-corner-all" onclick="signup()">Sign Up</a>
+						</form>
+					</div>
+				</div>
+				<div id="logged-view" style="display: none;">
+					<div data-role="collapsible-set" id="collapsible-set-1">
+						<div data-role="collapsible">
+							<h4>Login ID</h4>
+							<p id="logged-id"></p>
+						</div>
+						<div data-role="collapsible">
+							<h4>Name</h4>
+							<p id="logged-name"></p>
+						</div>
+						<div data-role="collapsible">
+							<h4>Gender</h4>
+							<p id="logged-gender"></p>
+						</div>
+						<div data-role="collapsible">
+							<h4>Country</h4>
+							<p id="logged-country"></p>
+						</div>
+					</div>
+					<a href="" id="button-logout" class="ui-btn ui-btn-inline ui-corner-all" onclick="logout()">Log Out</a>
+				</div>
+				
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-0-0" id="prev-0-1" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+    
+    <!-- Pagina principal: donde salen los problemas -->
+		<div data-role="page" id="page-0-1" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Problem</h1>
+			</div>
+			<div data-role="content">
+				<a href="#page-1-0" id="button-0-1-1" class="ui-btn ui-corner-all">Accident</a>
+				<a href="#page-2-0" id="button-0-1-2" class="ui-btn ui-corner-all">Stolen/Lost Goods</a>
+				<a href="#page-3-0" id="button-0-1-3" class="ui-btn ui-corner-all">Health</a>
+				<a href="#page-4-0" id="button-0-1-4" class="ui-btn ui-corner-all">Violence</a>
+				<a href="#page-5-0" id="button-0-1-5" class="ui-btn ui-corner-all">Fire</a>
+			</div>
+			<div data-role="controlgroup" id="buttons-problems" data-type="horizontal" align="center">
+				<a href="#" class="ui-btn ui-corner-all ui-icon-navigation ui-btn-icon-left ui-mini" onclick="startMaps('search')">Map</a>
+				<a href="#page-login" class="ui-btn ui-corner-all ui-icon-user ui-btn-icon-left ui-mini">Profile</a>
+				<a href="#page-records" class="ui-btn ui-corner-all ui-icon-audio ui-btn-icon-left ui-mini">Records</a>
+			</div>
+				
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-0-0" id="prev-0-1" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 1 - Accident -->
+		<div data-role="page" id="page-1-0" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Accident</h1>
+			</div>
+			<div data-role="content">
+				<a href="#page-1-1" id="button-1-0-1" class="ui-btn ui-corner-all">Traffic</a>
+				<a href="#page-1-2" id="button-1-0-2" class="ui-btn ui-corner-all">Domestic</a>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-0-1" id="prev-1-0" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 2 - Stolen/Lost Goods -->
+		<div data-role="page" id="page-2-0" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Stolen/Lost Goods</h1>
+			</div>
+			<div data-role="content">
+				<a href="#page-2-1" id="button-1-0-1" class="ui-btn ui-corner-all">Papers</a>
+				<a href="#page-2-2" id="button-1-0-2" class="ui-btn ui-corner-all">Theft</a>
+				<a href="#page-2-3" id="button-1-0-1" class="ui-btn ui-corner-all">Relative</a>
+				<a href="#page-2-4" id="button-1-0-2" class="ui-btn ui-corner-all">Luggage</a>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-0-1" id="prev-2-0" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 3 - Health -->
+		<div data-role="page" id="page-3-0" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Health</h1>
+			</div>
+			<div data-role="content">
+				<a href="#page-3-1" id="button-1-0-1" class="ui-btn ui-corner-all">Emergency</a>
+				<a href="#page-3-2" id="button-1-0-2" class="ui-btn ui-corner-all">Consultation</a>
+				<a href="#page-3-3" id="button-1-0-1" class="ui-btn ui-corner-all">Pharmacy</a>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-0-1" id="prev-3-0" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 4 - Violence -->
+		<div data-role="page" id="page-4-0" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Violence</h1>
+			</div>
+			<div data-role="content">
+				<a href="#page-4-1" id="button-1-0-1" class="ui-btn ui-corner-all">Rape</a>
+				<a href="#page-4-2" id="button-1-0-2" class="ui-btn ui-corner-all">Brawl</a>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-0-1" id="prev-4-0" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 5 - Fire -->
+		<div data-role="page" id="page-5-0" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Fire</h1>
+			</div>
+			<div data-role="content">
+				<a href="#page-5-1" id="button-1-0-1" class="ui-btn ui-corner-all">Furniture</a>
+				<a href="#page-5-2" id="button-1-0-2" class="ui-btn ui-corner-all">Building</a>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-0-1" id="prev-5-0" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+	<!-- Problema 1-1 - Accident-Traffic -->
+		<div data-role="page" id="page-1-1" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Accident - Traffic</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible" data-input="#searchForCollapsibleSet-1-1">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="button-1-1" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('hospitales')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-1-0" id="prev-1-1" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 1-2 - Accident-Domestic -->
+		<div data-role="page" id="page-1-2" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Accident - Domestic</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="button-1-2" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('hospitales')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-1-0" id="prev-1-2" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<!-- Problema 2-1 - Stolen/LostGoods-Papers -->
+		<div data-role="page" id="page-2-1" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Stolen/Lost Goods - Papers</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="btn-route-2-1" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('comisarias')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-2-0" id="prev-2-1" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 2-2 - Stolen/LostGoods-Theft -->
+		<div data-role="page" id="page-2-2" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Stolen/Lost Goods - Papers</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="btn-route-2-2" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('comisarias')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-2-0" id="prev-2-2" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 2-3 - Stolen/LostGoods-Relative -->
+		<div data-role="page" id="page-2-3" data-theme="a">
+				<div data-role="header" data-theme="a">
+					<h1>Stolen/Lost Goods - Relative</h1>
+				</div>
+				<div data-role="content-2" align="center">
+					<div data-role="collapsible">
+						<h4>What can I do?</h4>
+						<p>Collapsible content.</p>
+					</div>
+					<div data-role="collapsible">
+						<h4>Where can I go?</h4>
+						<p>Collapsible content.</p>
+					</div>
+					<div data-role="collapsible">
+						<h4>Telephone</h4>
+						<p>Collapsible content.</p>
+					</div>
+					<button id="btn-route-2-3" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('comisarias')">Route</button>
+				</div>
+				<div data-role="footer" data-theme="a" data-position="fixed">
+					<div class="ui-grid-a">
+						<div class="ui-block-a" align="left">
+							<a href="#page-2-0" id="prev-2-3" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+						</div>
+						<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+						</div>
+					</div>
+				</div>
+			</div>
+	<!-- Problema 2-4 - Stolen/LostGoods-Luggage -->
+		<div data-role="page" id="page-2-4" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Stolen/Lost Goods - Luggage</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>				
+				<button id="btn-route-2-4" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('comisarias')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-2-0" id="prev-2-4" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<!-- Problema 3-1 - Health-Emergency -->
+		<div data-role="page" id="page-3-1" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Health - Emergency</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="btn-route-3-1" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('hospitales')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-3-0" id="prev-3-1" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 3-2 - Health-Consultation -->
+		<div data-role="page" id="page-3-2" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Health - Consultation</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="btn-route-3-2" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('ambulatorios')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-3-0" id="prev-3-2" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 3-3 - Health-Pharmacy -->
+		<div data-role="page" id="page-3-3" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Health - Pharmacy</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="btn-route-3-3" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('farmacias')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-3-0" id="prev-3-3" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<!-- Problema 4-1 - Violence-Rape -->
+		<div data-role="page" id="page-4-1" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Violence - Rape</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="btn-route-4-1" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('comisarias')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-4-0" id="prev-4-1" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 4-2 - Violence-Brawl -->
+		<div data-role="page" id="page-4-2" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Violence - Brawl</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="btn-route-4-2" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('comisarias')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-4-0" id="prev-4-2" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<!-- Problema 5-1 - Fire-Furniture -->
+		<div data-role="page" id="page-5-1" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Fire - Furniture</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="btn-route-5-1" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('comisarias')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-5-0" id="prev-5-1" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Problema 5-2 - Fire-Building -->
+		<div data-role="page" id="page-5-2" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Fire - Building</h1>
+			</div>
+			<div data-role="content-2" align="center">
+				<div data-role="collapsible">
+					<h4>What can I do?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Where can I go?</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<div data-role="collapsible">
+					<h4>Telephone</h4>
+					<p>Collapsible content.</p>
+				</div>
+				<button id="btn-route-5-2" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-btn-inline ui-corner-all" onclick="startMaps('comisarias')">Route</button>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-5-0" id="prev-5-2" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<!-- Records -->                
+		<div data-role="page" id="page-records" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Records</h1>
+			</div>
+			<div data-role="content" align="center" id="record-content">
+				<input name="text-1" id="record-name" data-clear-btn="true" value="record_name" type="text" placeholder="Enter the record name" />
+				<a href="#" id="button-record-1" class="ui-btn ui-btn-inline ui-corner-all" onclick="startAudioRecord(0)">START</a>
+				<a href="#" id="button-record-2" class="ui-btn ui-btn-inline ui-corner-all ui-disabled" onclick="stopAudioRecord(0)">STOP</a>
+				<a href="#" id="records-search" class="ui-btn ui-icon-search ui-btn-icon-notext ui-btn-inline ui-corner-all" onclick="listAudioPath('file:///sdcard/eus.ehu.HelpApp/audio')"></a>
+				<p id="speak-text" style="color:orange;display:none">SPEAK NOW !</p>
+				<ul data-role="listview" data-filter="true" data-filter-placeholder="Search records..." data-inset="true" id="record-listview"></ul>
+				<div id="record-popup"></div>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-0-1" id="prev-2-0" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<!-- Test -->                
+		<div data-role="page" id="page-test-0" data-theme="a">
+			<div data-role="header" data-theme="a">
+				<h1>Test</h1>
+			</div>
+			<div data-role="content" id="test-content-0">
+				<div id="appField" class="ui-field-contain ui-hide-label" style="margin:5px 5%;">
+					<!-- <label for="app-field">Test Field:</label>
+					<input name="text-1" id="app-field" data-clear-btn="true" value="" type="text" placeholder="Enter the test field" /> -->
+					<div class="ui-field-contain">
+						<label for="app-field">Test Field:</label>
+						<select name="select-1" id="app-field" data-inline="true">
+							<option value="Geography" selected="selected">Geography</option>
+							<option value="Food">Food</option>
+							<option value="General">General</option>
+						</select>
+					</div>
+					<a href="" id="button-1" class="ui-btn ui-btn-inline ui-corner-all"	onclick="enterField()" >Start Test</a>
+				</div>
+				<h3 class="app-field"></h3>
+				<form id="form-0" style="display:none">
+					<fieldset data-role="controlgroup" data-iconpos="right">
+						<legend id="question-0"></legend>
+						<input name="radio-choice-0" id="radio-choice-0a" data-mini="true" value="0" type="radio"/>
+						<label for="radio-choice-0a" id="label-radio-choice-0-0"></label>
+						<input name="radio-choice-0" id="radio-choice-0b" data-mini="true" value="1" type="radio"/>
+						<label for="radio-choice-0b" id="label-radio-choice-0-1"></label>
+						<input name="radio-choice-0" id="radio-choice-0c" data-mini="true" value="2" type="radio"/>
+						<label for="radio-choice-0c" id="label-radio-choice-0-2"></label>
+						<input name="radio-choice-0" id="radio-choice-0d" data-mini="true" value="3" type="radio"/>
+						<label for="radio-choice-0d" id="label-radio-choice-0-3"></label>
+					</fieldset>
+					<div style="text-align:center;">
+						<a href="" id="button-test-0-1" class="ui-btn ui-btn-inline ui-corner-all" onclick="check(0)">CHECK</a>
+						<a href="" id="button-test-0-2" class="ui-btn ui-btn-inline ui-corner-all" style="display:none;" onclick="finishTest()">FINISH</a>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-theme="a" data-position="fixed">
+				<div class="ui-grid-b" style="width:80%; text-align:center; font-weight:normal;">
+					<div class="ui-block-a">RESULTS: </div>
+					<div class="ui-block-b res-1" id="res-0-1"></div>
+					<div class="ui-block-c res-2" id="res-0-2"></div>
+				</div>
+				<div class="ui-grid-a">
+					<div class="ui-block-a" align="left">
+						<a href="#page-0-0" id="prev-test-0" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-l ui-btn-icon-left" data-transition="turn">Prev</a>
+						<a href="#page-test-1" id="next-test-0" class="ui-btn ui-mini ui-corner-all ui-icon-arrow-r ui-btn-icon-left" data-transition="turn">Next</a>
+					</div>
+					<div class="ui-block-b" align="right">
+						<img border="0" width="32px" src="img/HelpApp3.png"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<!-- Aqui se acaban las paginas, nose si hara falta algo mas de codigo HTML -->        
+	        
+       
+    </body>
+    
+    <footer>
+    	<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript" src="js/objects.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </footer>
+</html>
