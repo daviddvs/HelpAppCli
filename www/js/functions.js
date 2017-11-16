@@ -334,7 +334,7 @@ function startMaps(location) {
 	//window.location = "geo:"; //40.765819,-73.975866";
 	if(location == "search") {
 		alert("Open Maps");
-		var url_map = "http://www.google.com/maps/search/";
+		var url_map = "http://www.google.com/maps/search/?api=1";
 	}
 	else {
 		alert("Find route to "+location);
