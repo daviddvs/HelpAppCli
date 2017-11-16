@@ -30,17 +30,15 @@ var appConstants = {
  ******************* LOGIN RELATED OBJECTS START HERE *********************
  **************************************************************************/
 
-var logged=false;
-
-var login = {
+// NO LO PONGO AQUI PORQUE SINO DESDE FUNCTIONS NO LO RECONOCE COMO OBJETO GLOBAL
+/*var login = {
 		id:null,
 		name:"",
 		gender:"",
 		country:""
 		
-};
+};*/
 
-loginIds=[];
 
 /**************************************************************************
  ******************* TEST RELATED OBJECTS START HERE **********************

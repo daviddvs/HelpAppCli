@@ -92,6 +92,30 @@
 						</div>
 					</div>
 					<a href="" id="button-logout" class="ui-btn ui-btn-inline ui-corner-all" onclick="logout()">Log Out</a>
+					<a href="#popup-settings" data-transition="fade" data-rel="popup" class="ui-btn ui-corner-all ui-alt-icon ui-shadow ui-btn-inline" title="SIGN UP">Settings</a>
+					<div data-role="popup" id="popup-settings" class="ui-content">
+						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+						<form id="form-settings">
+							<div class="ui-field-contain">
+								<label for="settingsName">Name:</label>
+								<input name="settingsName" id="settingsName" data-clear-btn="true" value="" placeholder="Enter full name" type="text"/>
+							</div>
+							<fieldset data-role="controlgroup" id="settings-gender" data-type="horizontal">
+								<legend>Gender:</legend>
+								<input name="settings-radio-choice-1" id="settings-radio-choice-1a" data-mini="true" value="Boy" type="radio"/>
+								<label for="settings-radio-choice-1a">Boy</label>
+								<input name="settings-radio-choice-1" id="settings-radio-choice-1b" data-mini="true" value="Girl" type="radio"/>
+								<label for="settings-radio-choice-1b">Girl</label>
+								<input name="settings-radio-choice-1" id="settings-radio-choice-1c" data-mini="true" value="Other" type="radio"/>
+								<label for="settings-radio-choice-1c">Other</label>
+							</fieldset>
+							<div class="ui-field-contain">
+								<label for="country">Country:</label>
+								<input name="country" id="settings-country" data-clear-btn="true" value="" placeholder="Enter yout country" type="text"/>
+							</div>
+							<a href="" id="button-settings" class="ui-btn ui-mini ui-btn-inline ui-corner-all" onclick="settings()">Modify</a>
+						</form>
+					</div>
 				</div>
 				
 			</div>

@@ -8,17 +8,23 @@
 /**************************************************************************
  ******************* LOGIN RELATED FUNCTIONS START HERE ********************
  **************************************************************************/
-
+var login = {
+		id:null,
+		name:"",
+		gender:"",
+		country:""
+		
+};
 
 function loginn() {
 	
 	var loginId = $("#loginId").val();
 	var loginVar=JSON.parse(localStorage.getItem(loginId));
-	//alert("Name: "+loginVar.name);
 	if(loginVar == null) {
 		alert("Not a valid login, try to sign up first");
 	}
 	else {
+		login=loginVar;
 		loadLogin(loginVar);
 	}
 	
@@ -29,7 +35,6 @@ function signup() {
 	login.id=$("#signupLoginId").val();
 	if(JSON.parse(localStorage.getItem(login.id))==null) {
 		login.name=$("#signupName").val();
-		//login.gender=$("#gender").val();
 		login.gender=$("#gender :radio:checked").val();
 		login.country=$("#country").val();
 		
@@ -58,6 +63,26 @@ function loadLogin(loginVar) {
 function logout() {
 	$("#login-request").show();
 	$("#logged-view").hide();
+}
+
+function settings() {
+	login.name=$("#settingsName").val();
+	login.gender=$("#settings-gender :radio:checked").val();
+	login.country=$("#settings-country").val();
+	
+	//alert("login id: "+login.id);
+	localStorage.removeItem(login.id);
+	localStorage.setItem(login.id, JSON.stringify(login));// Se guarda un objeto con el nombre login.id y con los campos de login
+	
+	$("#logged-name").html(login.name);
+	$("#logged-gender").html(login.gender);
+	$("#logged-country").html(login.country);
+	$("#popup-settings").popup("close");
+	
+	$("#settingsName").val("");
+	$("#settings-country").val("");
+	
+	
 }
 /**************************************************************************
  ******************* TEST RELATED FUNCTIONS START HERE ********************
