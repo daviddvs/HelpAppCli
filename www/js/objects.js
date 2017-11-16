@@ -31,13 +31,13 @@ var appConstants = {
  **************************************************************************/
 
 // NO LO PONGO AQUI PORQUE SINO DESDE FUNCTIONS NO LO RECONOCE COMO OBJETO GLOBAL
-/*var login = {
+var login = {
 		id:null,
 		name:"",
 		gender:"",
 		country:""
 		
-};*/
+};
 
 
 /**************************************************************************
