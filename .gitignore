@@ -2,6 +2,7 @@
 /*
 # Except from
 !android-debug.apk
+!versionFirmadaAlineada.apk
 !/.gitignore
 !www/
 !config.xml
